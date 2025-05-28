@@ -28,7 +28,6 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        disable-default-queries: true  # Disable default setup 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
 
