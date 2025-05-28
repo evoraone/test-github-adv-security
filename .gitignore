@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+
+# Python metadata
+*.egg-info/
+*.egg
+*.pyd
+*.pyo
+*.pdb
+*.whl
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Node-related (if Playwright or frontend is included)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+.pnpm-debug.log
+
+# Playwright test artifacts
+playwright-report/
+test-results/
+.vscode/
+
+# GitHub Actions artifacts and coverage
+coverage/
+coverage.xml
+*.cover
+*.lcov
+.pytest_cache/
+
+# Secret config / test data
+*.env
+.env.*
+secrets.json
+
+# IDEs and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.bak
+*.tmp
+
+# Dependency scanning test secrets
+fake_token.txt
