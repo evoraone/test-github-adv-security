@@ -16,20 +16,24 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: SonarCloud Analysis
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          organization: ${{ secrets.SONAR_ORG }}
-          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
-          token: ${{ secrets.SONAR_TOKEN }}
+      - name: Install SonarCloud CLI Scanner
+        run: |
+          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+          unzip sonar-scanner.zip
+          export PATH="$PWD/sonar-scanner-5.0.1.3006-linux/bin:$PATH"
+
+      - name: Run SonarCloud Analysis
+        run: |
+          sonar-scanner \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
       - name: Wait for SonarCloud Analysis to Finish
-        run: sleep 20  # Simple wait to allow background processing
+        run: sleep 20
 
       - name: Get Quality Gate Status
         id: quality_gate
         run: |
-          SONAR_STATUS=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: "https://sonarcloud.io/api/qualitygates/project_status?projectKey=${{ secrets.SONAR_PROJECT_KEY }}" | jq -r '.projectStatus.status')
+          SONAR_STATUS=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: "https://sonarcloud.io/api/qualitygates/project_status?projectKey=evoraglobal_aeris-web" | jq -r '.projectStatus.status')
           echo "Quality Gate status: $SONAR_STATUS"
           if [ "$SONAR_STATUS" != "OK" ]; then
             echo "❌ Quality Gate failed"
