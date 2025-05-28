@@ -1,9 +1,15 @@
 import os
-# Triggers a GHAS leaked secret
+
 def connect_to_service():
+    # Triggers a GHAS leaked secret
 #   secret_key = "AKIAFAKEKEY1234567890"
 #   print("Connecting with secret:", secret_key) 
     print("Connectibg to service") 
+
+    #Triggers a CodeQL scan  violation
+def unsafe(user_input):
+    eval(user_input)
+
 # # Triggers a SonarQube Code issue
 # def unused_function():
 #     pass
