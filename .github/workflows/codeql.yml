@@ -4,9 +4,10 @@ on:
   push:
     branches: [main]
   pull_request:
+    # Run CodeQL on PRs targeting these branches
     branches: [main]
-  schedule:
-    - cron: '0 0 * * 0'
+  # schedule:
+  #   - cron: '0 2 * * 1' # Runs every Monday at 2am UTC
 
 jobs:
   analyze:
@@ -18,16 +19,19 @@ jobs:
       security-events: write
 
     strategy:
+      fail-fast: false
       matrix:
-        language: [python]
+        language: [ 'javascript', 'python' ] # Adjust these languages to match your repo
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
+
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
 
