@@ -7,7 +7,8 @@ def connect_to_service():
     print("Connectibg to service") 
 
     #Triggers a CodeQL scan  violation
-def unsafe(user_input):
+def unsafe():
+    user_input = input("Enter something: ")
     eval(user_input)
 
 # # Triggers a SonarQube Code issue
