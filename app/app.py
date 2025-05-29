@@ -1,15 +1,16 @@
 import os
+from flask import Flask, request
+
+app = Flask(__name__)
+
+    #Triggers a CodeQL alert
+@app.route('/eval')
+def unsafe():
+    user_input = request.args.get('input')
+    eval(user_input)   
+    return "done"
 
 def connect_to_service():
-    # Triggers a GHAS leaked secret
-#   secret_key = "AKIAFAKEKEY1234567890"
-#   print("Connecting with secret:", secret_key) 
-    print("Connectibg to service") 
-
-    #Triggers a CodeQL scan  violation
-def unsafe():
-    user_input = input("Enter something: ")
-    eval(user_input)
 
 # # Triggers a SonarQube Code issue
 # def unused_function():
