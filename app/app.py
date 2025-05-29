@@ -11,11 +11,7 @@ def unsafe():
     return "done"
 
 def connect_to_service():
-    # Triggers a GHAS leaked secret
-#   secret_key = "AKIAFAKEKEY1234567890"
-#   print("Connecting with secret:", secret_key) 
-    print("Connecting to service") 
- 
+
 # # Triggers a SonarQube Code issue
 # def unused_function():
 #     pass

@@ -1,2 +1,2 @@
-#flask==2.3.2
-#PyYAML==5.3.1  # known to have CVE-2020-14343 and should be flagegd by dependabot
+flask==2.3.2
+PyYAML==5.3.1  # known to have CVE-2020-14343 and should be flagegd by dependabot
